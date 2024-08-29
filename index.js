@@ -15,14 +15,16 @@ app.use(welcomeRouter);
 const hbs = exphbs.create({
   extname: ".handlebars",
   defaultLayout: "main",
-  layoutsDir: path.join(__dirname, "views/layouts"),
+  layoutsDir: path.join(__dirname, "view/layouts"),
 });
 
-//app.set("view engine", "pug");
 // app.set("handlebars", hbs.engine);
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
-app.set("views", "views");
+// app.engine("handlebars", hbs.engine);
+// app.set("view engine", "handlebars");
+
+//app.set("view engine", "pug");
+app.set("view engine", "ejs");
+app.set("views", "view");
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -56,6 +58,27 @@ app.get("/newHandlebarsPage", (req, res) => {
   res.render("index", { title: "Home", items: ["Item 1", "Item 2", "Item 3"] });
 });
 
+app.get("/newEjsPage", (req, res) => {
+  res.render("index", {
+    title: "Ejs Page",
+    items: [
+      "Item 1",
+      "Item 2",
+      "Item 3",
+      "Item 1",
+      "Item 2",
+      "Item 3",
+      "Item 1",
+      "Item 2",
+      "Item 3",
+      "Item 1",
+      "Item 2",
+      "Item 3",
+    ],
+  });
+  // res.render("index");
+});
+
 // app.get("/newHandlebarsPage", (req, res) => {
 //   res.render("index", {
 //     layout: false, // Disable layout
@@ -65,7 +88,7 @@ app.get("/newHandlebarsPage", (req, res) => {
 // });
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+  res.status(404).sendFile(path.join(__dirname, "view", "404.html"));
 });
 
 app.listen(3000);
