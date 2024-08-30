@@ -58,23 +58,31 @@ app.get("/newHandlebarsPage", (req, res) => {
   res.render("index", { title: "Home", items: ["Item 1", "Item 2", "Item 3"] });
 });
 
-app.get("/newEjsPage", (req, res) => {
-  res.render("index", {
-    title: "Ejs Page",
-    items: [
-      "Item 1",
-      "Item 2",
-      "Item 3",
-      "Item 1",
-      "Item 2",
-      "Item 3",
-      "Item 1",
-      "Item 2",
-      "Item 3",
-      "Item 1",
-      "Item 2",
-      "Item 3",
-    ],
+var items = [
+  "Item 1",
+  "Item 2",
+  "Item 3",
+  "Item 1",
+  "Item 2",
+  "Item 3",
+  "Item 1",
+  "Item 2",
+  "Item 3",
+  "Item 1",
+  "Item 2",
+  "Item 3",
+];
+
+app.get("/homeEjsPage", (req, res) => {
+  res.render("home", {
+    title: "Home Ejs Page",
+  });
+  // res.render("index");
+});
+
+app.get("/aboutEjsPage", (req, res) => {
+  res.render("about", {
+    title: "About Ejs Page",
   });
   // res.render("index");
 });
